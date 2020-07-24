@@ -3,6 +3,7 @@ shortestPath = (nodes, graph, start, end) => {
     nodes = number of nodes in the graph
     graph = adjacency of the graph e.g. [[1,2],[0,2],[0,1]] is a triangle [[1],[0,2],[1]] is a line.
     start = node to start search from
+    end = target node
     */
    // creating an array of visited nodes
     let visited = Array.apply(null, {length: (nodes)}).map(Boolean, false)
@@ -27,7 +28,7 @@ shortestPath = (nodes, graph, start, end) => {
     }
 
     let path = [prev[end], end]
-    while (path[0]!==start){
+    while (path[0]!==start || path[0]!== undefined){
         path.unshift(prev[path[0]])
     }
     return path
