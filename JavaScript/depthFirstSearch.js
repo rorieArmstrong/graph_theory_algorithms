@@ -1,15 +1,13 @@
-depthFirstSearch = (n, g, start) => {
+depthFirstSearch = (nodes, graph, start) => {
     /* 
     n = numer of nodes in the graph
-    g = adjacency of the graph e.g. [[1,2],[0,2],[0,1]] is a triangle
+    g = adjacency of the graph e.g. [[1,2],[0,2],[0,1]] is a triangle [[1],[0,2],[1]] is a line.
     start = node to start search from
     */
    // creating an array of visited nodes
-    let visited = Array.apply(null, {length: (n)}).map(Boolean, false)
+    let visited = Array.apply(null, {length: (nodes)}).map(Boolean, false)
     // begining the algorithm
     let stack = []
-
-    visited[start] = true
 
     function dfs(node) {
         if(visited[node] === true) {return}
@@ -18,11 +16,12 @@ depthFirstSearch = (n, g, start) => {
             stack.push(node)
         }
 
-        let neightbourhood = g[node]
+        let neightbourhood = graph[node]
         for (next in neightbourhood){
             dfs(next)
         }
     }
-    console.log(stack)
-    return dfs(start)
+
+    dfs(start)
+    return stack
 }
