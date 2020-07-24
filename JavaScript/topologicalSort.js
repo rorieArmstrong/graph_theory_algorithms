@@ -10,11 +10,11 @@ topologicalSort = (nodes, graph, start) => {
     let i = n-1
     // begining the algorithm
 
-    function dfs(node) {
+    function dfs(node, visitedNodes) {
         if(visited[node] === true) {return}
         else{ 
             visited[node] = true
-            stack.push(node)
+            visitedNodes.push(node)
         }
 
         let neightbourhood = graph[node]
@@ -23,6 +23,15 @@ topologicalSort = (nodes, graph, start) => {
         }
     }
 
-    dfs(start)
-    return stack
+    for(node = 0; node < nodes; node++){
+        if(!visited[node]){
+            let visitedNodes = []
+            dfs(node, visitedNodes)
+            for (nodeID in visitedNodes){
+                order[i] = nodeID
+                i--
+            }
+        }
+    }
+    return order
 }
