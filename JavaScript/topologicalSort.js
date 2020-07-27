@@ -1,8 +1,7 @@
-topologicalSort = (nodes, graph, start) => {
+topologicalSort = (nodes, graph) => {
     /* 
     n = numer of nodes in the graph
     g = adjacency of the directional graph e.g. [[1,2],[],[]] is a fork going from 0 to 1 and 2. [[1],[2],[]] is a line from 0 to 2 through 1.
-    start = node to start search from
     */
    // creating an array of visited nodes
     let visited = Array.apply(null, {length: (nodes)}).map(Boolean, false)
