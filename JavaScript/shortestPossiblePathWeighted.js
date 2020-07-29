@@ -53,5 +53,5 @@ shortestPath = (nodes, graph, start, end) => {
         }
     }
 
-    return dist[end]
+    return dist[end], order[end]
 }
